@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASHEN THRONE — Dark Fantasy Action</title>
+  <meta name="description" content="Enter the ruins. Face what remains. An atmospheric dark fantasy action game." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="preloader"><div class="preloader-inner"><div class="preloader-emblem"><svg viewBox="0 0 80 80" fill="none"><polygon points="40,4 76,62 4,62" stroke="#8a6a4a" stroke-width="1" fill="none" opacity="0.6"/><circle cx="40" cy="40" r="24" stroke="#8a6a4a" stroke-width="0.8" fill="none" opacity="0.4"/><line x1="40" y1="4" x2="40" y2="76" stroke="#8a6a4a" stroke-width="0.5" opacity="0.4"/><line x1="4" y1="40" x2="76" y2="40" stroke="#8a6a4a" stroke-width="0.5" opacity="0.4"/><circle cx="40" cy="40" r="4" fill="#8a6a4a" opacity="0.8"/></svg></div><p class="preloader-text">LOADING</p><div class="preloader-bar"><div class="preloader-fill"></div></div></div></div>
+
+  <nav id="navbar"><div class="nav-inner"><a href="#hero" class="nav-logo"><span class="logo-main">ASHEN</span><span class="logo-sub">THRONE</span></a><button class="hamburger" id="hamburger" aria-label="메뉴 열기"><span></span><span></span><span></span></button><ul class="nav-links" id="navLinks"><li><a href="#hero">HOME</a></li><li><a href="#world">WORLD</a></li><li><a href="#character">CHARACTER</a></li><li><a href="#gameplay">GAMEPLAY</a></li><li><a href="#media">MEDIA</a></li><li><a href="#credits">CREDITS</a></li></ul></div></nav>
+
+  <section id="hero">
+    <div class="hero-bg" id="heroBg"><img src="images/hero-city.jpg" alt="Fallen Kingdom" class="hero-bg-img" id="heroBgImg" /><div class="hero-overlay"></div><div class="hero-vignette"></div></div>
+    <canvas id="particleCanvas"></canvas>
+    <canvas id="rainCanvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-eyebrow" data-reveal>A DARK FANTASY ACTION GAME</div>
+      <h1 class="hero-title" data-reveal><span class="title-line title-main">ASHEN</span><span class="title-line title-sub">THRONE</span></h1>
+      <div class="hero-divider" data-reveal></div>
+      <p class="hero-tagline" data-reveal>THE KINGDOM HAS FALLEN.<br/>ENTER THE RUINS. FACE WHAT REMAINS.</p>
+      <div class="hero-buttons" data-reveal>
+        <a href="#trailer" class="btn btn-primary"><span class="btn-icon">&#9654;</span><span>WATCH TRAILER</span></a>
+        <a href="#world" class="btn btn-secondary"><span>EXPLORE THE WORLD</span><span class="btn-arrow">&#8594;</span></a>
+      </div>
+    </div>
+    <div class="scroll-indicator"><div class="scroll-line"></div><span>SCROLL</span></div>
+  </section>
+
+  <section id="world" class="section">
+    <div class="world-inner">
+      <div class="world-image-wrap reveal-left">
+        <div class="world-img-frame">
+          <img src="images/hero-city.jpg" alt="The Fallen Kingdom" class="world-img" />
+          <div class="world-img-overlay"></div>
+          <div class="world-img-corner tl"></div><div class="world-img-corner tr"></div><div class="world-img-corner bl"></div><div class="world-img-corner br"></div>
+        </div>
+        <div class="world-label">RUINS OF VALDENMOOR</div>
+      </div>
+      <div class="world-text reveal-right">
+        <div class="section-eyebrow">CHAPTER I</div>
+        <h2 class="section-title">THE FALLEN<br/>KINGDOM</h2>
+        <div class="section-divider"></div>
+        <p class="world-body">한때 번영했던 왕국은 알 수 없는 재앙 이후<br/>완전히 무너져 내렸다.</p>
+        <p class="world-body">폐허가 된 도시의 중심에는 아직도 거대한 성이 남아 있으며,<br/>그곳에는 이 모든 몰락의 진실이 숨겨져 있다.</p>
+        <p class="world-body">플레이어는 폐허가 된 왕국을 탐험하며<br/>도시 깊숙한 곳에 남겨진 흔적과<br/>자신을 기다리고 있는 존재를 마주하게 된다.</p>
+        <div class="world-stats">
+          <div class="stat-item"><span class="stat-num">I</span><span class="stat-label">FALLEN KINGDOM</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat-item"><span class="stat-num">&#8734;</span><span class="stat-label">DARK SECRETS</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat-item"><span class="stat-num">&#216;</span><span class="stat-label">SURVIVORS</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="world-quote reveal-up">
+      <div class="quote-line"></div>
+      <blockquote>"The city breathes no more. Yet something ancient still watches from the spire."</blockquote>
+      <div class="quote-line"></div>
+    </div>
+  </section>
+
+  <section id="character" class="section section-dark">
+    <div class="character-bg-text">THE WANDERER</div>
+    <div class="character-inner">
+      <div class="character-image-wrap reveal-left">
+        <div class="char-glow"></div>
+        <div class="char-frame"><img src="images/knight-character.png" alt="The Wanderer" class="char-img" /></div>
+        <div class="char-scanlines"></div>
+      </div>
+      <div class="character-info reveal-right">
+        <div class="section-eyebrow">PLAYER CHARACTER</div>
+        <h2 class="section-title char-title">THE<br/>WANDERER</h2>
+        <p class="char-subtitle">A KNIGHT WALKING THROUGH THE RUINS.</p>
+        <div class="section-divider"></div>
+        <p class="char-desc">폐허가 된 왕국을 떠도는 기사.<br/>그의 목적과 과거는 알려지지 않았다.</p>
+        <p class="char-desc">그가 향하는 곳은 오직 도시의 중심,<br/>거대한 탑이 서 있는 곳이다.</p>
+        <div class="char-stats">
+          <div class="char-stat-row">
+            <div class="char-stat-item"><span class="char-stat-label">CLASS</span><span class="char-stat-value">KNIGHT</span></div>
+            <div class="char-stat-item"><span class="char-stat-label">WEAPON</span><span class="char-stat-value">LONG SWORD</span></div>
+          </div>
+          <div class="char-stat-row">
+            <div class="char-stat-item"><span class="char-stat-label">ARMOR</span><span class="char-stat-value">HEAVY ARMOR</span></div>
+            <div class="char-stat-item"><span class="char-stat-label">ROLE</span><span class="char-stat-value">PLAYER</span></div>
+          </div>
+        </div>
+        <div class="char-bars">
+          <div class="bar-row"><span class="bar-label">STRENGTH</span><div class="bar-track"><div class="bar-fill" data-width="88"></div></div><span class="bar-val">88</span></div>
+          <div class="bar-row"><span class="bar-label">ENDURANCE</span><div class="bar-track"><div class="bar-fill" data-width="74"></div></div><span class="bar-val">74</span></div>
+          <div class="bar-row"><span class="bar-label">AGILITY</span><div class="bar-track"><div class="bar-fill" data-width="62"></div></div><span class="bar-val">62</span></div>
+          <div class="bar-row"><span class="bar-label">WILLPOWER</span><div class="bar-track"><div class="bar-fill" data-width="95"></div></div><span class="bar-val">95</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gameplay" class="section">
+    <div class="section-header reveal-up">
+      <div class="section-eyebrow">CORE MECHANICS</div>
+      <h2 class="section-title">GAMEPLAY</h2>
+      <div class="section-divider centered"></div>
+    </div>
+    <div class="gameplay-grid">
+      <div class="gameplay-card reveal-up" data-delay="0">
+        <div class="gameplay-card-bg"><img src="images/hero-city.jpg" alt="Combat" class="card-bg-img" /><div class="card-bg-overlay"></div></div>
+        <div class="gameplay-card-content"><div class="card-number">01</div><div class="card-icon"><svg viewBox="0 0 40 40" fill="none"><line x1="8" y1="32" x2="32" y2="8" stroke="#8a6a4a" stroke-width="1.5"/><line x1="28" y1="4" x2="36" y2="12" stroke="#8a6a4a" stroke-width="1.5"/><circle cx="10" cy="30" r="3" stroke="#8a6a4a" stroke-width="1"/></svg></div><h3 class="card-title">COMBAT</h3><div class="card-divider"></div><p class="card-desc">강력한 적들과 직접 맞서 싸우는 전투. 매 순간이 생존을 건 결투다.</p><div class="card-tag">MELEE · PARRY · EXECUTE</div></div>
+      </div>
+      <div class="gameplay-card reveal-up" data-delay="100">
+        <div class="gameplay-card-bg"><img src="images/hero-city.jpg" alt="Explore" class="card-bg-img" style="object-position:30% center;" /><div class="card-bg-overlay"></div></div>
+        <div class="gameplay-card-content"><div class="card-number">02</div><div class="card-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="12" stroke="#8a6a4a" stroke-width="1"/><circle cx="20" cy="20" r="3" fill="#8a6a4a" opacity="0.6"/><line x1="20" y1="4" x2="20" y2="10" stroke="#8a6a4a" stroke-width="1"/><line x1="20" y1="30" x2="20" y2="36" stroke="#8a6a4a" stroke-width="1"/><line x1="4" y1="20" x2="10" y2="20" stroke="#8a6a4a" stroke-width="1"/><line x1="30" y1="20" x2="36" y2="20" stroke="#8a6a4a" stroke-width="1"/></svg></div><h3 class="card-title">EXPLORE</h3><div class="card-divider"></div><p class="card-desc">폐허가 된 세계를 탐험하는 플레이. 잊혀진 길을 따라 어둠 속으로.</p><div class="card-tag">OPEN WORLD · SECRETS · LORE</div></div>
+      </div>
+      <div class="gameplay-card reveal-up" data-delay="200">
+        <div class="gameplay-card-bg"><img src="images/hero-city.jpg" alt="Survive" class="card-bg-img" style="object-position:70% center;" /><div class="card-bg-overlay"></div></div>
+        <div class="gameplay-card-content"><div class="card-number">03</div><div class="card-icon"><svg viewBox="0 0 40 40" fill="none"><path d="M20 6 L34 14 L34 26 L20 34 L6 26 L6 14 Z" stroke="#8a6a4a" stroke-width="1" fill="none"/><path d="M20 12 L28 17 L28 23 L20 28 L12 23 L12 17 Z" stroke="#8a6a4a" stroke-width="0.6" fill="none" opacity="0.5"/></svg></div><h3 class="card-title">SURVIVE</h3><div class="card-divider"></div><p class="card-desc">끊임없이 다가오는 위협 속에서 살아남는 플레이. 방심은 곧 죽음이다.</p><div class="card-tag">STAMINA · RESOURCES · DANGER</div></div>
+      </div>
+      <div class="gameplay-card reveal-up" data-delay="300">
+        <div class="gameplay-card-bg"><img src="images/hero-city.jpg" alt="Discover" class="card-bg-img" style="object-position:50% 80%;" /><div class="card-bg-overlay"></div></div>
+        <div class="gameplay-card-content"><div class="card-number">04</div><div class="card-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="18" r="10" stroke="#8a6a4a" stroke-width="1"/><line x1="20" y1="28" x2="20" y2="36" stroke="#8a6a4a" stroke-width="1.5"/><circle cx="20" cy="18" r="2" fill="#8a6a4a" opacity="0.8"/></svg></div><h3 class="card-title">DISCOVER</h3><div class="card-divider"></div><p class="card-desc">세계에 숨겨진 이야기와 진실을 발견하는 플레이. 모든 것에는 이유가 있다.</p><div class="card-tag">STORY · CODEX · TRUTH</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trailer" class="section section-trailer">
+    <div class="trailer-wrap reveal-up">
+      <div class="trailer-label">OFFICIAL TRAILER</div>
+      <div class="trailer-container" id="trailerContainer">
+        <video id="trailerVideo" class="trailer-video" poster="images/hero-city.jpg" preload="metadata">
+          <source src="videos/KakaoTalk_20260908_152930745.mp4" type="video/mp4" />
+        </video>
+        <div class="trailer-overlay" id="trailerOverlay">
+          <div class="trailer-bg-img"><img src="images/hero-city.jpg" alt="Trailer" /><div class="trailer-bg-dim"></div></div>
+          <button class="play-btn" id="playBtn" aria-label="트레일러 재생">
+            <div class="play-btn-ring"></div>
+            <div class="play-btn-inner"><svg viewBox="0 0 24 24" fill="none"><polygon points="8,5 19,12 8,19" fill="#d4c4a8" /></svg></div>
+          </button>
+          <div class="trailer-title-overlay"><span>ASHEN THRONE</span><span class="trailer-sub-text">GAMEPLAY TRAILER 2026</span></div>
+        </div>
+      </div>
+      <div class="trailer-corner tl"></div><div class="trailer-corner tr"></div><div class="trailer-corner bl"></div><div class="trailer-corner br"></div>
+    </div>
+  </section>
+
+  <section id="media" class="section">
+    <div class="section-header reveal-up">
+      <div class="section-eyebrow">GALLERY</div>
+      <h2 class="section-title">MEDIA</h2>
+      <div class="section-divider centered"></div>
+    </div>
+    <div class="media-tabs reveal-up">
+      <button class="media-tab active" data-tab="screenshots">SCREENSHOTS</button>
+      <button class="media-tab" data-tab="trailer-tab">TRAILER</button>
+      <button class="media-tab" data-tab="gameplay-tab">GAMEPLAY</button>
+    </div>
+    <div class="media-panel active" id="tab-screenshots">
+      <div class="media-grid">
+        <div class="media-item media-large reveal-up" data-src="images/hero-city.jpg"><img src="images/hero-city.jpg" alt="01 The Spire" /><div class="media-item-overlay"><span class="media-item-label">01 — THE SPIRE</span><span class="media-zoom-icon">&#8853;</span></div></div>
+        <div class="media-item reveal-up" data-delay="100" data-src="images/knight-character.png"><img src="images/knight-character.png" alt="02 The Knight" /><div class="media-item-overlay"><span class="media-item-label">02 — THE KNIGHT</span><span class="media-zoom-icon">&#8853;</span></div></div>
+        <div class="media-item reveal-up" data-delay="200" data-src="images/hero-city.jpg"><img src="images/hero-city.jpg" alt="03 The Ruins" style="object-position:20% center;" /><div class="media-item-overlay"><span class="media-item-label">03 — THE RUINS</span><span class="media-zoom-icon">&#8853;</span></div></div>
+        <div class="media-item reveal-up" data-delay="300" data-src="images/hero-city.jpg"><img src="images/hero-city.jpg" alt="04 The Path" style="object-position:80% center;" /><div class="media-item-overlay"><span class="media-item-label">04 — THE PATH</span><span class="media-zoom-icon">&#8853;</span></div></div>
+      </div>
+      <p class="media-note">실제 게임 스크린샷은 추후 추가됩니다.</p>
+    </div>
+    <div class="media-panel" id="tab-trailer-tab">
+      <div class="media-video-wrap">
+        <video controls class="media-video" poster="images/hero-city.jpg">
+          <source src="videos/KakaoTalk_20260908_152930745.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+    <div class="media-panel" id="tab-gameplay-tab">
+      <div class="media-video-wrap">
+        <video controls class="media-video" poster="images/hero-city.jpg">
+          <source src="videos/KakaoTalk_20260908_152930745.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section id="credits" class="section section-dark section-credits">
+    <div class="credits-bg"><img src="images/hero-city.jpg" alt="" class="credits-bg-img" /><div class="credits-bg-dim"></div></div>
+    <div class="credits-inner">
+      <div class="section-eyebrow reveal-up">PRODUCTION</div>
+      <h2 class="section-title credits-title reveal-up">CREDITS</h2>
+      <div class="section-divider centered reveal-up"></div>
+      <div class="credits-grid">
+        <div class="credits-block reveal-up" data-delay="0"><div class="credits-label">INSTITUTION</div><div class="credits-value">INDUK UNIVERSITY</div><div class="credits-sub">GAME &amp; VR CONTENT DESIGN</div></div>
+        <div class="credits-block reveal-up" data-delay="100"><div class="credits-label">PROJECT</div><div class="credits-value">GRADUATION PROJECT</div><div class="credits-sub">2026</div></div>
+        <div class="credits-block reveal-up" data-delay="200"><div class="credits-label">DEVELOPER</div><div class="credits-value">김영빈</div><div class="credits-sub">KIM YOUNG-BIN</div></div>
+      </div>
+      <div class="credits-tools reveal-up">
+        <div class="credits-tools-label">TOOLS &amp; SOFTWARE</div>
+        <div class="credits-tools-list">
+          <div class="tool-item"><div class="tool-icon">U</div><span>UNITY</span></div>
+          <div class="tool-item"><div class="tool-icon">M</div><span>MAYA</span></div>
+          <div class="tool-item"><div class="tool-icon">Z</div><span>ZBRUSH</span></div>
+          <div class="tool-item"><div class="tool-icon">S</div><span>SUBSTANCE 3D</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-logo"><span class="logo-main">ASHEN</span><span class="logo-sub">THRONE</span></div>
+      <div class="footer-divider"></div>
+      <div class="footer-meta"><span>GRADUATION PROJECT</span><span class="footer-dot">·</span><span>GAME &amp; VR CONTENT DESIGN</span><span class="footer-dot">·</span><span>INDUK UNIVERSITY</span></div>
+      <p class="footer-copy">&#169; 2026 KIM YOUNG-BIN. ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&#10005;</button>
+    <div class="lightbox-inner"><img src="" alt="" id="lightboxImg" /></div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
