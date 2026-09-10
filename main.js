@@ -6,16 +6,89 @@
 'use strict';
 
 /* ══════════════════════════════
-   1. PRELOADER
+   1. PRELOADER (단일 게이지 & 다크 판타지 연출)
 ══════════════════════════════ */
+
+// ── 은은한 잿가루/불씨 파티클 ──
+(function initPreloaderCanvas() {
+  const canvas = document.getElementById('preloaderCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  // 소량의 잿가루 불씨 (35개로 절제되어 깔끔함)
+  const embers = Array.from({ length: 35 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 1.5 + 0.5,
+    speedY: -(Math.random() * 0.4 + 0.15),
+    speedX: (Math.random() - 0.5) * 0.2,
+    alpha: Math.random() * 0.4 + 0.1,
+  }));
+
+  function renderEmbers() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const e of embers) {
+      ctx.beginPath();
+      ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(228, 204, 166, ${e.alpha})`;
+      ctx.shadowBlur = 4;
+      ctx.shadowColor = 'rgba(184, 144, 101, 0.4)';
+      ctx.fill();
+
+      e.y += e.speedY;
+      e.x += e.speedX;
+      if (e.y < -5) {
+        e.y = canvas.height + 5;
+        e.x = Math.random() * canvas.width;
+      }
+      if (e.x < -5) e.x = canvas.width + 5;
+      if (e.x > canvas.width + 5) e.x = -5;
+    }
+    requestAnimationFrame(renderEmbers);
+  }
+  renderEmbers();
+})();
+
+// ── 단일 게이지 0% ~ 100% 진행 ──
 window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
-  setTimeout(() => {
-    preloader.classList.add('hidden');
-    preloader.addEventListener('transitionend', () => preloader.remove(), { once: true });
-    // Hero reveal 시작
-    revealHeroElements();
-  }, 2000);
+  const barEl     = document.getElementById('preloaderBar');
+  const pctEl     = document.getElementById('preloaderPercent');
+
+  let pct = 0;
+  const DURATION_MS = 1800; // 전체 로딩 시간
+  const INTERVAL_MS = 20;
+  const step = 100 / (DURATION_MS / INTERVAL_MS);
+
+  const progressInterval = setInterval(() => {
+    // 자연스러운 진행 가속/변동
+    const increment = step * (0.8 + Math.random() * 0.6);
+    pct = Math.min(pct + increment, 100);
+    const displayVal = Math.floor(pct);
+
+    if (barEl) barEl.style.width = pct + '%';
+    if (pctEl) pctEl.textContent = displayVal + '%';
+
+    if (pct >= 100) {
+      clearInterval(progressInterval);
+      if (barEl) barEl.style.width = '100%';
+      if (pctEl) pctEl.textContent = '100%';
+
+      // 완료 후 부드럽게 페이드아웃
+      setTimeout(() => {
+        preloader.classList.add('hidden');
+        preloader.addEventListener('transitionend', () => preloader.remove(), { once: true });
+        revealHeroElements();
+      }, 300);
+    }
+  }, INTERVAL_MS);
 });
 
 function revealHeroElements() {

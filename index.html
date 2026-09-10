@@ -11,7 +11,32 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="preloader"><div class="preloader-inner"><div class="preloader-emblem"><svg viewBox="0 0 80 80" fill="none"><polygon points="40,4 76,62 4,62" stroke="#8a6a4a" stroke-width="1" fill="none" opacity="0.6"/><circle cx="40" cy="40" r="24" stroke="#8a6a4a" stroke-width="0.8" fill="none" opacity="0.4"/><line x1="40" y1="4" x2="40" y2="76" stroke="#8a6a4a" stroke-width="0.5" opacity="0.4"/><line x1="4" y1="40" x2="76" y2="40" stroke="#8a6a4a" stroke-width="0.5" opacity="0.4"/><circle cx="40" cy="40" r="4" fill="#8a6a4a" opacity="0.8"/></svg></div><p class="preloader-text">LOADING</p><div class="preloader-bar"><div class="preloader-fill"></div></div></div></div>
+  <div id="preloader">
+    <!-- 잔잔한 잿가루/불씨 배경 캔버스 -->
+    <canvas id="preloaderCanvas"></canvas>
+
+    <div class="preloader-inner">
+      <!-- ── 중앙 게임 로고 (빛이 은은하게 났다가 사라지는 연출) ── -->
+      <div class="preloader-logo-wrap">
+        <div class="preloader-logo">
+          <span class="pl-logo-main">ASHEN</span>
+          <span class="pl-logo-sub">THRONE</span>
+        </div>
+        <div class="preloader-logo-glow"></div>
+      </div>
+
+      <!-- ── 단일 진행 게이지 바 ── -->
+      <div class="preloader-gauge-wrap">
+        <div class="preloader-track">
+          <div class="preloader-bar" id="preloaderBar"></div>
+        </div>
+        <div class="preloader-meta">
+          <span class="preloader-label" id="preloaderLabel">LOADING</span>
+          <span class="preloader-percent" id="preloaderPercent">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <nav id="navbar"><div class="nav-inner"><a href="#hero" class="nav-logo"><span class="logo-main">ASHEN</span><span class="logo-sub">THRONE</span></a><button class="hamburger" id="hamburger" aria-label="메뉴 열기"><span></span><span></span><span></span></button><ul class="nav-links" id="navLinks"><li><a href="#hero">HOME</a></li><li><a href="#world">WORLD</a></li><li><a href="#character">CHARACTER</a></li><li><a href="#gameplay">GAMEPLAY</a></li><li><a href="#media">MEDIA</a></li><li><a href="#credits">CREDITS</a></li></ul></div></nav>
 

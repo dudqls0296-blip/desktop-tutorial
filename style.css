@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════
    ASHEN THRONE — Official Website Stylesheet
    Dark Fantasy Action Game
 ═══════════════════════════════════════════════════════════ */
@@ -7,8 +7,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
-  background: #080a0d;
-  color: #c8bfb2;
+  background: #0f131a;
+  color: #ded6cb;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 300;
   overflow-x: hidden;
@@ -20,53 +20,162 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ── CSS VARIABLES ── */
 :root {
-  --black:      #060709;
-  --dark:       #0d0f13;
-  --dark2:      #12151a;
-  --gray-dark:  #1e2228;
-  --gray:       #3a3f47;
-  --gray-light: #6b7280;
-  --fog:        #8a9aaa;
-  --text:       #c8bfb2;
-  --text-muted: #7a7068;
-  --gold:       #8a6a4a;
-  --gold-light: #c4a882;
-  --gold-dim:   #5a4530;
-  --red:        #7a2020;
-  --red-bright: #a83030;
-  --white-dim:  #d4c4a8;
+  --black:      #0b0e14;
+  --dark:       #131720;
+  --dark2:      #1a1f2c;
+  --gray-dark:  #2a313d;
+  --gray:       #4d5562;
+  --gray-light: #828b9a;
+  --fog:        #a4b6c8;
+  --text:       #ded6cb;
+  --text-muted: #9d9387;
+  --gold:       #b89065;
+  --gold-light: #e4cca6;
+  --gold-dim:   #785d42;
+  --red:        #8f2828;
+  --red-bright: #be3b3b;
+  --white-dim:  #ede3d2;
   --nav-h:      80px;
 }
 
 /* ═══════════════ PRELOADER ═══════════════ */
 #preloader {
   position: fixed; inset: 0; z-index: 9999;
-  background: var(--black);
+  background: radial-gradient(ellipse at center, #10141d 0%, #0a0d13 60%, #06080b 100%);
   display: flex; align-items: center; justify-content: center;
   transition: opacity 0.8s ease, visibility 0.8s ease;
 }
-#preloader.hidden { opacity: 0; visibility: hidden; }
-.preloader-inner { text-align: center; }
-.preloader-emblem { width: 80px; height: 80px; margin: 0 auto 24px; animation: spinSlow 6s linear infinite; }
-@keyframes spinSlow { to { transform: rotate(360deg); } }
-.preloader-text {
-  font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
-  letter-spacing: 0.4em;
-  color: var(--gold);
-  margin-bottom: 20px;
+#preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* 잔잔한 잿가루 캔버스 */
+#preloaderCanvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; opacity: 0.5;
 }
-.preloader-bar {
-  width: 200px; height: 1px;
-  background: var(--gray-dark);
+
+/* 내부 컨테이너 */
+.preloader-inner {
+  position: relative; z-index: 2;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* ── 중앙 게임 로고 ── */
+.preloader-logo-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 38px;
+  user-select: none;
+}
+
+.preloader-logo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.95;
+  animation: logoBreatheGlow 4.2s ease-in-out infinite;
+}
+
+.pl-logo-main {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.4rem, 6.5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--white-dim);
+  letter-spacing: 0.16em;
+  text-shadow: 0 0 14px rgba(184, 144, 101, 0.2);
+}
+
+.pl-logo-sub {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.9rem, 2.2vw, 1.25rem);
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  margin-top: 8px;
+  text-shadow: 0 0 10px rgba(184, 144, 101, 0.25);
+}
+
+/* 로고 후면의 부드럽고 은은한 백라이트 글로우 */
+.preloader-logo-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(228, 204, 166, 0.2) 0%, rgba(184, 144, 101, 0.08) 50%, transparent 75%);
+  filter: blur(24px);
+  pointer-events: none;
+  z-index: 1;
+  animation: bgBloomGlow 4.2s ease-in-out infinite;
+}
+
+/* 눈부시지 않고 은은하게 피어오르는 숨결 애니메이션 */
+@keyframes logoBreatheGlow {
+  0%, 100% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 4px rgba(184, 144, 101, 0.15));
+  }
+  50% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 14px rgba(228, 204, 166, 0.45)) drop-shadow(0 0 28px rgba(184, 144, 101, 0.25));
+  }
+}
+
+@keyframes bgBloomGlow {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.18);
+    opacity: 0.45;
+  }
+}
+
+/* ── 단일 진행 게이지 바 ── */
+.preloader-gauge-wrap {
+  width: 220px;
   margin: 0 auto;
 }
-.preloader-fill {
-  height: 100%; width: 0%;
-  background: var(--gold);
-  animation: fillBar 1.8s ease forwards;
+.preloader-track {
+  width: 100%; height: 2px;
+  background: rgba(42, 49, 61, 0.7);
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
 }
-@keyframes fillBar { to { width: 100%; } }
+.preloader-bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(to right, var(--gold-dim), var(--gold), var(--gold-light));
+  box-shadow: 0 0 8px rgba(228,204,166,0.6);
+  transition: width 0.06s ease-out;
+}
+.preloader-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.28em;
+  color: var(--text-muted);
+}
+.preloader-label {
+  letter-spacing: 0.35em;
+  transition: opacity 0.3s ease;
+}
+.preloader-percent {
+  color: var(--gold-light);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.15em;
+}
 
 /* ═══════════════ SCROLLBAR ═══════════════ */
 ::-webkit-scrollbar { width: 4px; }
@@ -166,16 +275,16 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   position: absolute; inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(6,7,9,0.2) 0%,
-    rgba(6,7,9,0.05) 30%,
-    rgba(6,7,9,0.05) 60%,
-    rgba(6,7,9,0.7) 85%,
-    rgba(6,7,9,1) 100%
+    rgba(11,14,20,0.12) 0%,
+    rgba(11,14,20,0) 30%,
+    rgba(11,14,20,0) 60%,
+    rgba(11,14,20,0.4) 85%,
+    rgba(11,14,20,0.88) 100%
   );
 }
 .hero-vignette {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, transparent 30%, rgba(6,7,9,0.7) 100%);
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(11,14,20,0.45) 100%);
 }
 
 /* Canvases */
@@ -386,13 +495,13 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  filter: contrast(1.1) saturate(0.5);
+  filter: contrast(1.05) saturate(0.7) brightness(1.08);
   transition: transform 0.8s ease;
 }
 .world-img-frame:hover .world-img { transform: scale(1.04); }
 .world-img-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(6,7,9,0.3) 0%, transparent 50%, rgba(6,7,9,0.3) 100%);
+  background: linear-gradient(135deg, rgba(11,14,20,0.15) 0%, transparent 50%, rgba(11,14,20,0.15) 100%);
 }
 /* Corner decorations */
 .world-img-corner {
@@ -480,7 +589,7 @@ blockquote {
 }
 .char-glow {
   position: absolute; inset: -20%;
-  background: radial-gradient(ellipse at center bottom, rgba(138,106,74,0.12) 0%, transparent 60%);
+  background: radial-gradient(ellipse at center bottom, rgba(184,144,101,0.2) 0%, transparent 65%);
   pointer-events: none;
 }
 .char-frame {
@@ -489,7 +598,7 @@ blockquote {
 }
 .char-img {
   width: 100%;
-  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.8)) drop-shadow(0 0 40px rgba(138,106,74,0.15));
+  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.7)) drop-shadow(0 0 45px rgba(184,144,101,0.22)) brightness(1.05);
   transition: transform 0.8s ease;
 }
 .char-frame:hover .char-img { transform: scale(1.02) translateY(-8px); }
@@ -586,13 +695,13 @@ blockquote {
 .card-bg-img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: grayscale(0.6) brightness(0.3) saturate(0.5);
+  filter: grayscale(0.4) brightness(0.55) saturate(0.7);
   transition: filter 0.8s ease;
 }
-.gameplay-card:hover .card-bg-img { filter: grayscale(0.3) brightness(0.4) saturate(0.6); }
+.gameplay-card:hover .card-bg-img { filter: grayscale(0.2) brightness(0.72) saturate(0.85); }
 .card-bg-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(6,7,9,0.95) 0%, rgba(6,7,9,0.4) 60%, transparent 100%);
+  background: linear-gradient(to top, rgba(11,14,20,0.88) 0%, rgba(11,14,20,0.25) 60%, transparent 100%);
 }
 
 .gameplay-card-content {
@@ -694,11 +803,11 @@ blockquote {
 .trailer-bg-img img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: brightness(0.35) saturate(0.4);
+  filter: brightness(0.6) saturate(0.65);
 }
 .trailer-bg-dim {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, transparent 20%, rgba(6,7,9,0.5) 100%);
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(11,14,20,0.35) 100%);
 }
 
 .play-btn {
@@ -802,16 +911,16 @@ blockquote {
 .media-item img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: saturate(0.5) brightness(0.85);
+  filter: saturate(0.75) brightness(0.95);
   transition: filter 0.6s ease, transform 0.6s ease;
 }
 .media-item:hover img {
-  filter: saturate(0.7) brightness(1);
+  filter: saturate(0.9) brightness(1.08);
   transform: scale(1.04);
 }
 .media-item-overlay {
   position: absolute; inset: 0;
-  background: rgba(6,7,9,0.5);
+  background: rgba(11,14,20,0.35);
   display: flex; align-items: flex-end; justify-content: space-between;
   padding: 16px 20px;
   opacity: 0;
@@ -853,11 +962,11 @@ blockquote {
 .credits-bg-img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: brightness(0.08) saturate(0.3);
+  filter: brightness(0.22) saturate(0.5);
 }
 .credits-bg-dim {
   position: absolute; inset: 0;
-  background: rgba(6,7,9,0.7);
+  background: rgba(11,14,20,0.55);
 }
 .credits-inner {
   position: relative; z-index: 2;
@@ -874,7 +983,7 @@ blockquote {
 .credits-block {
   padding: 40px 32px;
   border-right: 1px solid var(--gray-dark);
-  background: rgba(255,255,255,0.02);
+  background: rgba(255,255,255,0.035);
 }
 .credits-block:last-child { border-right: none; }
 .credits-label {
@@ -934,7 +1043,7 @@ blockquote {
 
 /* ═══════════════ FOOTER ═══════════════ */
 #footer {
-  background: #040506;
+  background: #0b0e14;
   padding: 60px 40px;
   border-top: 1px solid var(--gray-dark);
 }
