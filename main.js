@@ -93,8 +93,9 @@ window.addEventListener('load', () => {
 
 function revealHeroElements() {
   const els = document.querySelectorAll('[data-reveal]');
-  els.forEach((el, i) => {
-    setTimeout(() => el.classList.add('revealed'), i * 250 + 200);
+  // CSS의 animation-delay로 정밀하게 타이밍을 제어하므로 한 번에 활성화
+  requestAnimationFrame(() => {
+    els.forEach(el => el.classList.add('revealed'));
   });
 }
 
@@ -145,16 +146,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 /* ══════════════════════════════
-   3. PARALLAX
+   3. PARALLAX (터치 디바이스 제외)
 ══════════════════════════════ */
 const heroBg = document.getElementById('heroBg');
+const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
-window.addEventListener('scroll', () => {
-  const sy = window.scrollY;
-  if (heroBg && sy < window.innerHeight) {
-    heroBg.style.transform = `translateY(${sy * 0.35}px)`;
-  }
-}, { passive: true });
+if (!isTouchDevice) {
+  window.addEventListener('scroll', () => {
+    const sy = window.scrollY;
+    if (heroBg && sy < window.innerHeight) {
+      heroBg.style.transform = `translateY(${sy * 0.35}px)`;
+    }
+  }, { passive: true });
+}
 
 /* ══════════════════════════════
    4. PARTICLE CANVAS (안개/먼지)
@@ -172,7 +176,7 @@ window.addEventListener('scroll', () => {
   window.addEventListener('resize', resize, { passive: true });
 
   const particles = [];
-  const COUNT = 60;
+  const COUNT = isTouchDevice ? 25 : 60;
 
   for (let i = 0; i < COUNT; i++) {
     particles.push({
